@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: #FFC24B;
+    color: #1C2637;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  /* Focus visibility for keyboard users */
+  :focus-visible {
+    outline: 3px solid #2F6FE0;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-[min(100%-2rem,theme(maxWidth.wrap))];
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-brand-red;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-0.5 w-6 rounded-full bg-current;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[0.95rem] font-bold transition-transform duration-200 will-change-transform;
+  }
+  .btn-ink { @apply bg-ink text-white hover:-translate-y-0.5; }
+  .btn-accent { @apply bg-brand-red text-white hover:-translate-y-0.5; }
+  .btn-ghost { @apply border-2 border-ink text-ink hover:bg-ink hover:text-white; }
+  .card {
+    @apply rounded-[22px] border border-line bg-paper shadow-soft;
+  }
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-0.5 w-0 bg-current transition-all duration-300;
+  }
+  .link-underline:hover::after { @apply w-full; }
+}
+
+@layer utilities {
+  /* Subtle paper grain overlay */
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .text-balance { text-wrap: balance; }
+  .paint-underline {
+    background-image: linear-gradient(90deg, #FFC24B, #FF8A3D);
+    background-repeat: no-repeat;
+    background-position: 0 88%;
+    background-size: 100% 0.34em;
+    border-radius: 2px;
+  }
+  .mask-blob {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%23000' d='M45.6 -63.2C58.3 -55.3 66.5 -40.5 70.9 -24.9C75.3 -9.3 75.9 7.1 70.6 21.3C65.3 35.5 54.1 47.5 40.7 56.6C27.3 65.7 11.7 71.9 -4.6 78.1C-20.9 84.3 -41.8 90.5 -54.8 82.7C-67.8 74.9 -72.9 53.1 -76.5 33.1C-80.1 13.1 -82.2 -5.1 -77.4 -21.3C-72.6 -37.5 -60.9 -51.7 -46.8 -59.3C-32.7 -66.9 -16.3 -67.9 0.7 -68.9C17.8 -69.9 35.5 -71 45.6 -63.2Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%23000' d='M45.6 -63.2C58.3 -55.3 66.5 -40.5 70.9 -24.9C75.3 -9.3 75.9 7.1 70.6 21.3C65.3 35.5 54.1 47.5 40.7 56.6C27.3 65.7 11.7 71.9 -4.6 78.1C-20.9 84.3 -41.8 90.5 -54.8 82.7C-67.8 74.9 -72.9 53.1 -76.5 33.1C-80.1 13.1 -82.2 -5.1 -77.4 -21.3C-72.6 -37.5 -60.9 -51.7 -46.8 -59.3C-32.7 -66.9 -16.3 -67.9 0.7 -68.9C17.8 -69.9 35.5 -71 45.6 -63.2Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Hide custom cursor system on touch / coarse pointers */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor { display: none !important; }
+}
