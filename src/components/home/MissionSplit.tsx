@@ -18,7 +18,7 @@ export default function MissionSplit({ dict }: { dict: Dictionary }) {
 
         <Reveal delay={0.1} className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] border-[6px] border-white shadow-lift">
-            <ArtImage artKey="kids" alt={dict.mission.title} seed="mission" />
+            <ArtImage artKey="bakesale" src="/images/gallery-ws.jpg" alt={dict.mission.title} seed="mission" />
           </div>
           <div className="absolute -bottom-6 -left-4 hidden max-w-[220px] rounded-2xl bg-white p-4 shadow-soft sm:block">
             <p className="font-hand text-2xl leading-tight text-ink">{dict.marquee[0]}</p>

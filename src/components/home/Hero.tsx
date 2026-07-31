@@ -18,8 +18,11 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: Dictionar
   return (
     <section ref={ref} className="relative overflow-hidden pt-[70px]">
       {/* soft colour blobs */}
-      <span className="pointer-events-none absolute -right-24 -top-24 h-[380px] w-[380px] rounded-full bg-brand-yellow/40 blur-[70px]" />
-      <span className="pointer-events-none absolute -bottom-32 -left-24 h-[340px] w-[340px] rounded-full bg-brand-teal/30 blur-[70px]" />
+      <span className="pointer-events-none absolute -right-24 -top-24 h-[380px] w-[380px] rounded-full bg-brand-yellow/55 blur-[70px]" />
+      <span className="pointer-events-none absolute -bottom-32 -left-24 h-[340px] w-[340px] rounded-full bg-brand-teal/40 blur-[70px]" />
+      <span className="pointer-events-none absolute -left-20 top-10 h-[300px] w-[300px] rounded-full bg-brand-pink/35 blur-[80px]" />
+      <span className="pointer-events-none absolute right-[18%] bottom-[-10%] h-[280px] w-[280px] rounded-full bg-brand-green/30 blur-[80px]" />
+      <span className="pointer-events-none absolute left-[42%] -top-16 h-[240px] w-[240px] rounded-full bg-brand-purple/25 blur-[80px]" />
 
       <div className="wrap grid items-center gap-8 py-14 md:grid-cols-[1.1fr_0.9fr] md:py-20">
         <div>
@@ -109,7 +112,7 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: Dictionar
             style={{ y: y3 }}
             className="absolute bottom-0 left-[8%] z-40 h-[46%] w-[50%] rotate-[3deg] overflow-hidden rounded-[26px] border-[6px] border-white shadow-lift"
           >
-            <ArtImage artKey="kids" src="/images/hero-3.jpg" alt="An Art4Good volunteer drawing together with a child at a workshop" seed="hero-c" />
+            <ArtImage artKey="clay" src="/images/hero-3.jpg" alt="An Art4Good volunteer drawing together with a child at a workshop" seed="hero-c" />
           </motion.figure>
           <motion.div
             className="absolute -right-2 top-[46%] z-50 flex items-center gap-2 rounded-2xl bg-white px-3 py-2.5 text-sm font-bold shadow-soft"
@@ -161,6 +164,40 @@ function FloatingShapes({ reduce }: { reduce: boolean }) {
       >
         <path d="M8 20h24M20 8v24" />
       </motion.svg>
+      <motion.svg
+        className="pointer-events-none absolute -right-6 top-2 h-11 w-11 text-brand-purple"
+        {...(reduce ? {} : { animate: { rotate: [0, 360] } })}
+        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+        viewBox="0 0 40 40"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      >
+        <path d="M20 5v30M5 20h30M9 9l22 22M31 9L9 31" />
+      </motion.svg>
+      <motion.svg
+        className="pointer-events-none absolute bottom-6 -left-10 h-12 w-12 text-brand-green"
+        {...(reduce ? {} : { animate: { y: [0, 12, 0] } })}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        viewBox="0 0 40 40"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      >
+        <path d="M5 26c5-6 10-6 15 0s10 6 15 0" />
+      </motion.svg>
+      <motion.span
+        className="pointer-events-none absolute left-[46%] -top-6 block h-5 w-5 rounded-full bg-brand-pink"
+        {...(reduce ? {} : { animate: { y: [0, -12, 0], scale: [1, 1.15, 1] } })}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="pointer-events-none absolute right-[24%] -bottom-8 block h-4 w-4 rounded-full bg-brand-yellow"
+        {...(reduce ? {} : { animate: { y: [0, 10, 0] } })}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+      />
     </>
   );
 }

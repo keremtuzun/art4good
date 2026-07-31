@@ -8,7 +8,10 @@ import Reveal from "@/components/Reveal";
 export default function FeaturedProjects({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const featured = PROJECTS.slice(0, 3);
   return (
-    <section className="bg-cream-2 py-20 md:py-28">
+    <section
+      className="py-20 md:py-28"
+      style={{ backgroundImage: "linear-gradient(180deg,#EAF7FF 0%,#EFFBF3 60%,#FFF7E6 100%)" }}
+    >
       <div className="wrap">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading eyebrow={dict.projects.eyebrow} title={dict.projects.title} lede={dict.projects.lede} />

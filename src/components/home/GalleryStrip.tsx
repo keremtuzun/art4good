@@ -32,7 +32,7 @@ export default function GalleryStrip({ dict, locale }: { dict: Dictionary; local
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-4 pt-10 text-sm font-semibold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-purple/85 via-brand-pink/40 to-transparent p-4 pt-10 text-sm font-semibold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {dict.gallery.captions[g.id as keyof typeof dict.gallery.captions]}
               </figcaption>
             </Reveal>
