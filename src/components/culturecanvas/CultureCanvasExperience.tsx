@@ -54,6 +54,8 @@ export default function CultureCanvasExperience({ locale }: { locale: "tr" | "en
   const [journeyStep, setJourneyStep] = useState(0);
   const [concept, setConcept] = useState<Record<string, string>>({});
   const [idea, setIdea] = useState("");
+  const [lastMentorIdea, setLastMentorIdea] = useState("");
+  const [mentorVariant, setMentorVariant] = useState(0);
   const [mentorReply, setMentorReply] = useState("Ne yapmak istediğini anlat; sana bir ya da iki meraklı soru sorayım.");
   const [thinking, setThinking] = useState(false);
   const journeyRef = useRef<HTMLElement>(null);
@@ -71,18 +73,32 @@ export default function CultureCanvasExperience({ locale }: { locale: "tr" | "en
     setJourneyStep((step) => Math.min(step + 1, journey.length));
   };
 
-  const askMentor = async (event: FormEvent) => {
-    event.preventDefault();
-    if (!idea.trim()) return;
+  const requestMentorQuestions = async (message: string, variant: number) => {
     setThinking(true);
     try {
-      const response = await fetch("/api/culturecanvas/mentor", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: idea, age: 10, topic: selectedTopic }) });
+      const response = await fetch("/api/culturecanvas/mentor", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message, age: 10, topic: selectedTopic, variant }) });
       const data = (await response.json()) as { response?: string };
       setMentorReply(data.response ?? "Bu fikri bir şekle dönüştürsen ilk çizgin nasıl olurdu?");
-      setIdea("");
     } catch {
       setMentorReply("Fikrindeki en merak uyandırıcı parça hangisi? Onu üç farklı biçimde değiştirebilir misin?");
     } finally { setThinking(false); }
+  };
+
+  const askMentor = async (event: FormEvent) => {
+    event.preventDefault();
+    const message = idea.trim();
+    if (!message) return;
+    setLastMentorIdea(message);
+    setMentorVariant(0);
+    setIdea("");
+    await requestMentorQuestions(message, 0);
+  };
+
+  const deriveMoreQuestions = async () => {
+    if (!lastMentorIdea || thinking) return;
+    const nextVariant = mentorVariant + 1;
+    setMentorVariant(nextVariant);
+    await requestMentorQuestions(lastMentorIdea, nextVariant);
   };
 
   return (
@@ -110,7 +126,7 @@ export default function CultureCanvasExperience({ locale }: { locale: "tr" | "en
 
       <section className="bg-[#fff8e8] px-5 py-24 sm:px-8"><div className="mx-auto max-w-[1180px]"><p className={`${styles.kicker} text-[#d44d45]`}>Motif kaşifi</p><h2 className="text-5xl font-semibold sm:text-7xl">Şekillerin hafızası var.</h2><div className="mt-12 grid gap-7 lg:grid-cols-[.9fr_1.1fr]"><div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2">{motifs.map((item) => <button key={item.name} type="button" onClick={() => setMotif(item)} className={`rounded-[28px] border-2 p-5 text-left transition hover:-translate-y-1 ${motif.name === item.name ? "border-[#173969] bg-white shadow-soft" : "border-transparent bg-[#efe4d0]"}`}><span className="block text-5xl" style={{ color: item.color }}>{item.mark}</span><strong className="mt-4 block">{item.name}</strong></button>)}</div><motion.article key={motif.name} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="relative overflow-hidden rounded-[42px] p-8 text-white shadow-lift sm:p-12" style={{ background: motif.color }}><div className="absolute right-[-5%] top-[-20%] text-[18rem] font-bold leading-none opacity-10">{motif.mark}</div><span className="text-8xl">{motif.mark}</span><p className="mt-7 text-xs font-extrabold uppercase tracking-[.2em] text-white/65">{motif.region}</p><h3 className="mt-2 text-5xl font-semibold">{motif.name}</h3><p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">{motif.meaning}</p><div className="mt-9 rotate-[-1deg] rounded-[28px] bg-[#fff8e8] p-6 text-[#173969]"><span className="font-hand text-2xl text-[#d44d45]">Kopyalamak yerine merak et:</span><p className="mt-2 text-2xl font-bold">“{motif.question}”</p></div></motion.article></div></div></section>
 
-      <section className="relative overflow-hidden bg-[#2aa8a8] px-5 py-24 sm:px-8"><div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_center,#fff_2px,transparent_2px)] [background-size:28px_28px]" /><div className="relative mx-auto grid max-w-[1100px] gap-9 lg:grid-cols-[.8fr_1.2fr]"><div className="text-white"><p className={styles.kicker}>Bana ilham ver</p><h2 className="text-5xl font-semibold sm:text-7xl">Bazen ilk çizgi en zorudur.</h2><p className="mt-6 text-lg text-white/80">Ne düşündüğünü yaz. CultureCanvas senin yerine çizmez; hayal gücünü açacak bir veya iki soru sorar.</p></div><div className="rounded-[40px] bg-[#fff8e8] p-6 shadow-lift sm:p-9"><div className={styles.mentorPaper}><span className="text-4xl">🪁</span><p className="mt-4 text-xl font-bold leading-relaxed text-[#173969]">{mentorReply}</p><span className="mt-5 inline-block rounded-full bg-[#f2bd3c] px-3 py-1 text-xs font-extrabold text-[#173969]">GELİŞTİRME MODU · YEREL MOCK MODEL</span></div><form onSubmit={askMentor} className="mt-5 flex flex-col gap-3 sm:flex-row"><label className="sr-only" htmlFor="idea">Sanat fikrin</label><input id="idea" value={idea} onChange={(event) => setIdea(event.target.value)} placeholder="Örn. Bir kilim yapmak istiyorum…" className="min-w-0 flex-1 rounded-full border-2 border-[#173969]/15 bg-white px-6 py-4 font-semibold outline-none focus:border-[#173969]" /><button disabled={thinking} className="rounded-full bg-[#173969] px-6 py-4 font-extrabold text-white disabled:opacity-60">{thinking ? "Düşünüyor…" : "Sorumu sor →"}</button></form><div className="mt-4 flex flex-wrap gap-2">{["Ne çizeceğimi bilmiyorum.", "Bir kilim yapmak istiyorum.", "Ebru hakkında fikir istiyorum."].map((prompt) => <button key={prompt} type="button" onClick={() => setIdea(prompt)} className="rounded-full bg-[#e9dfcb] px-3 py-2 text-xs font-bold text-[#526782]">{prompt}</button>)}</div></div></div></section>
+      <section className="relative overflow-hidden bg-[#2aa8a8] px-5 py-24 sm:px-8"><div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_center,#fff_2px,transparent_2px)] [background-size:28px_28px]" /><div className="relative mx-auto grid max-w-[1100px] gap-9 lg:grid-cols-[.8fr_1.2fr]"><div className="text-white"><p className={styles.kicker}>Bana ilham ver</p><h2 className="text-5xl font-semibold sm:text-7xl">Bazen ilk çizgi en zorudur.</h2><p className="mt-6 text-lg text-white/80">Ne düşündüğünü yaz. CultureCanvas senin yerine çizmez; hayal gücünü açacak bir veya iki soru sorar.</p></div><div className="rounded-[40px] bg-[#fff8e8] p-6 shadow-lift sm:p-9"><div className={styles.mentorPaper}><span className="text-4xl">🪁</span><p aria-live="polite" className="mt-4 text-xl font-bold leading-relaxed text-[#173969]">{mentorReply}</p><div className="mt-5 flex flex-wrap items-center gap-2"><span className="inline-block rounded-full bg-[#f2bd3c] px-3 py-1 text-xs font-extrabold text-[#173969]">GELİŞTİRME MODU · YEREL MOCK MODEL</span>{lastMentorIdea ? <button type="button" onClick={deriveMoreQuestions} disabled={thinking} className="rounded-full border-2 border-[#173969]/15 bg-white px-3 py-1 text-xs font-extrabold text-[#173969] transition hover:-translate-y-0.5 disabled:opacity-50">↻ Başka iki soru</button> : null}</div></div><form onSubmit={askMentor} className="mt-5 flex flex-col gap-3 sm:flex-row"><label className="sr-only" htmlFor="idea">Sanat fikrin</label><input id="idea" value={idea} onChange={(event) => setIdea(event.target.value)} placeholder="Örn. Bir kilim yapmak istiyorum…" className="min-w-0 flex-1 rounded-full border-2 border-[#173969]/15 bg-white px-6 py-4 font-semibold outline-none focus:border-[#173969]" /><button disabled={thinking} className="rounded-full bg-[#173969] px-6 py-4 font-extrabold text-white disabled:opacity-60">{thinking ? "Düşünüyor…" : "Sorumu sor →"}</button></form><div className="mt-4 flex flex-wrap gap-2">{["Ne çizeceğimi bilmiyorum.", "Bir kilim yapmak istiyorum.", "Ebru hakkında fikir istiyorum."].map((prompt) => <button key={prompt} type="button" onClick={() => setIdea(prompt)} className="rounded-full bg-[#e9dfcb] px-3 py-2 text-xs font-bold text-[#526782]">{prompt}</button>)}</div></div></div></section>
 
       <section className="bg-[#173969] px-5 py-20 text-center text-white sm:px-8"><div className="mx-auto max-w-3xl"><span className="text-7xl">🖍️</span><h2 className="mt-7 text-5xl font-semibold">Bitmiş resmi biz vermiyoruz.</h2><p className="mt-5 text-xl leading-relaxed text-white/75">Çünkü en güzel bölüm, fikrin senin elinde hiç beklemediğin bir şeye dönüşmesi.</p><a href="#kesfet" className="mt-9 inline-flex rounded-full bg-[#f2bd3c] px-7 py-4 font-extrabold text-[#173969]">Yeni bir şey keşfet ↑</a><div className="mt-8"><Link href={`/${locale}/culturecanvas/admin`} className="text-xs font-bold text-white/35 hover:text-white/70">Art4Good eğitim ekibi · Veri stüdyosu</Link></div></div></section>
     </div>
