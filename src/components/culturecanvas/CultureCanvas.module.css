@@ -1,0 +1,30 @@
+.canvas { --navy:#173969; --blue:#176e9f; --turquoise:#2aa8a8; --coral:#ed685e; --yellow:#f2bd3c; --cream:#fff8e8; }
+.canvas section { content-visibility:auto; contain-intrinsic-size:800px; }
+.ebru { position:absolute; inset:0; z-index:-20; background:radial-gradient(circle at 18% 12%,#f8cb5a66,transparent 24%),radial-gradient(circle at 83% 18%,#33b8b955,transparent 27%),radial-gradient(circle at 64% 87%,#e35f4f55,transparent 28%),linear-gradient(115deg,#fff8e8 30%,#e6f4e7 100%); }
+.ebru::before,.ebru::after { content:""; position:absolute; border-radius:45% 55% 63% 37%; filter:blur(1px); animation:drift 12s ease-in-out infinite alternate; }
+.ebru::before { width:25rem; height:25rem; left:-9rem; top:6rem; background:#1856a5; opacity:.94; }
+.ebru::after { width:26rem; height:26rem; right:-9rem; bottom:-6rem; background:#ef705f; opacity:.88; animation-delay:-5s; }
+.plate { position:absolute; inset:8%; border-radius:50%; background:repeating-conic-gradient(from 10deg,#1f70aa 0 8deg,#fdf3d2 8deg 25deg,#dc4c46 25deg 31deg,#fdf3d2 31deg 45deg); border:18px solid #1f70aa; box-shadow:0 28px 70px #17365d30,inset 0 0 0 7px #fdf3d2,inset 0 0 0 13px #dc4c46; animation:spin 40s linear infinite; }
+.plateCenter { position:absolute; inset:27%; display:grid; place-items:center; border-radius:50%; color:#fff8e8; background:#28aeb0; box-shadow:inset 0 0 0 12px #fff4ce,inset 0 0 0 18px #183b78; font-size:clamp(4rem,9vw,8rem); }
+.floatObject { position:absolute; display:grid; place-items:center; min-width:5.5rem; min-height:5.5rem; padding:1rem; border-radius:44% 56% 58% 42%; font-size:3.2rem; box-shadow:0 22px 60px -25px #172c50; animation:float 7s ease-in-out infinite; }
+.kicker { font-size:.78rem; line-height:1; font-weight:900; text-transform:uppercase; letter-spacing:.22em; margin-bottom:1.2rem; }
+.map { position:relative; min-height:500px; overflow:hidden; border-radius:44px; background:linear-gradient(160deg,#4cb8c8,#2c8eaf); box-shadow:inset 0 0 0 2px #ffffff33,0 32px 80px #081c3838; }
+.mapSea { position:absolute; right:8%; top:6%; font-size:.72rem; font-weight:900; letter-spacing:.3em; opacity:.55; }
+.land { position:absolute; inset:19% 6% 16%; background:#efcd6c; border:7px solid #fff2c2; border-radius:48% 52% 34% 66% / 38% 47% 53% 62%; transform:rotate(-4deg); box-shadow:inset -25px -18px 0 #dba956; }
+.land::after { content:""; position:absolute; right:-5%; top:16%; width:35%; height:54%; border-radius:0 80% 60% 20%; background:#efcd6c; border-right:7px solid #fff2c2; transform:rotate(10deg); }
+.regionPin { position:absolute; z-index:3; width:5.4rem; height:5.4rem; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:50%; color:white; border:4px solid #fff9df; box-shadow:0 8px 0 #17396955; transition:transform .2s; }
+.regionPin:hover,.regionPin:focus-visible { transform:translateY(-7px) scale(1.06); }
+.regionPin span { font-size:1.9rem; line-height:1; }
+.regionPin small { margin-top:.25rem; max-width:5rem; font-size:.58rem; font-weight:900; line-height:1; }
+.topicCard { min-height:340px; display:flex; flex-direction:column; padding:2rem; color:white; border-radius:38px 58px 32px 50px; background:var(--topic); box-shadow:0 24px 60px -34px #173969; overflow:hidden; position:relative; }
+.topicCard::after { content:"✦"; position:absolute; right:-1rem; bottom:-3rem; font-size:11rem; opacity:.12; transform:rotate(14deg); }
+.nextButton { display:inline-flex; margin-top:1.6rem; border-radius:999px; background:#173969; padding:.85rem 1.25rem; color:white; font-size:.9rem; font-weight:900; transition:transform .2s; }
+.nextButton:hover { transform:translateY(-3px); }
+.questionPaper { position:relative; min-height:430px; border-radius:52px 32px 48px 26px; background:#fff8e8; padding:clamp(2rem,5vw,4rem); box-shadow:0 28px 70px #8d261d55; }
+.questionPaper::before { content:""; position:absolute; top:-12px; left:18%; width:110px; height:30px; background:#f2bd3caa; transform:rotate(-3deg); }
+.mentorPaper { border-radius:26px 46px 30px 50px; border:2px dashed #17396933; background:white; padding:1.5rem; }
+@keyframes float { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-15px) rotate(2deg)} }
+@keyframes drift { to{transform:translate(25px,-18px) rotate(8deg)} }
+@keyframes spin { to{transform:rotate(360deg)} }
+@media (max-width:760px){ .map{min-height:620px}.regionPin{width:4.7rem;height:4.7rem}.regionPin:nth-of-type(3){left:15%!important;top:58%!important}.regionPin:nth-of-type(4){left:38%!important;top:72%!important}.regionPin:nth-of-type(5){left:57%!important;top:50%!important}.regionPin:nth-of-type(6){left:70%!important;top:28%!important}.regionPin:nth-of-type(7){left:76%!important;top:8%!important} }
+@media (prefers-reduced-motion:reduce){ .plate,.floatObject,.ebru::before,.ebru::after{animation:none!important} }

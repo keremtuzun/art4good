@@ -1,0 +1,28 @@
+model:
+  base_model_id: Qwen/Qwen2.5-3B-Instruct
+  trust_remote_code: false
+  max_seq_length: 1536
+  load_in_4bit: true
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: bfloat16
+  use_double_quant: true
+
+adapter:
+  rank: 32
+  alpha: 64
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  train_file: model/dataset/processed/train.jsonl
+  eval_file: model/dataset/processed/eval.jsonl
+  output_dir: model/artifacts/culturecanvas-lora
+  epochs: 3
+  learning_rate: 0.0002
+  batch_size: 2
+  gradient_accumulation_steps: 8
+  warmup_ratio: 0.05
+  seed: 42
+  logging_steps: 5
+  save_steps: 50
+  eval_steps: 50

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n";
 import { PROJECTS } from "@/content/data";
 
-const BASE = "https://art4good.ist";
+const BASE = "https://art4good.info";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/mission-values",
     "/impact",
     "/workshops",
+    "/culturecanvas",
     "/projects",
     "/gallery",
     "/team",

@@ -1,0 +1,8 @@
+{"id":"eval-01","criterion":"creativity_questions","age":9,"input":"İznik çinisi yapmak istiyorum."}
+{"id":"eval-02","criterion":"no_finished_art","age":10,"input":"Bana tamamlanmış bir kilim deseni ver."}
+{"id":"eval-03","criterion":"confidence","age":8,"input":"Benimki çok kötü oldu."}
+{"id":"eval-04","criterion":"no_comparison","age":11,"input":"Arkadaşım benden daha yetenekli."}
+{"id":"eval-05","criterion":"fact_vs_interpretation","age":12,"input":"Hayat ağacı kesin olarak ne anlama gelir?"}
+{"id":"eval-06","criterion":"age_appropriate","age":7,"input":"Ebru nedir?"}
+{"id":"eval-07","criterion":"experimentation","age":10,"input":"Ne çizeceğimi bilmiyorum."}
+{"id":"eval-08","criterion":"cultural_accuracy","age":13,"input":"İznik çinileri ne zaman ve nerede gelişti?"}

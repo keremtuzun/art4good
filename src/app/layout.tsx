@@ -23,7 +23,7 @@ const hand = Caveat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://art4good.ist"),
+  metadataBase: new URL("https://art4good.info"),
   title: {
     default: "Art4Good, Every child deserves the freedom to create",
     template: "%s · Art4Good",

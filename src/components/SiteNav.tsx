@@ -16,6 +16,7 @@ export default function SiteNav({ locale, dict }: { locale: Locale; dict: Dictio
   const pathname = usePathname();
 
   const links = [
+    { href: `/${locale}/culturecanvas`, label: "CultureCanvas" },
     { href: `/${locale}/about`, label: dict.nav.about },
     { href: `/${locale}/impact`, label: dict.nav.impact },
     { href: `/${locale}/workshops`, label: dict.nav.workshops },

@@ -1,4 +1,4 @@
-# Art4Good — website
+# Art4Good — website + CultureCanvas
 
 A modern, bilingual (English / Turkish) marketing site for **Art4Good**, a
 student-led initiative in Istanbul that brings art workshops and creative
@@ -15,6 +15,18 @@ motion, a custom cursor, and a masonry gallery with a lightbox.
 - **Framer Motion** (reveals, parallax, magnetic buttons, painted timeline, page motion)
 - Built-in **next/font**, **next/og** (dynamic Open Graph image), sitemap & robots
 - Zero external UI dependencies — deploy-ready for **Vercel**
+
+## CultureCanvas
+
+The illustrated learning experience lives at `/tr/culturecanvas` (and the
+matching English locale route). It includes the regional art map, topic lessons,
+motif explorer, guided creative journey, and a clearly labeled deterministic
+local mock mentor. The protected dataset studio is at
+`/[locale]/culturecanvas/admin`; set `CULTURECANVAS_ADMIN_SECRET` to enable it.
+
+The independent open-weight model pipeline is in `model/`. It contains the
+behavior specification, seed JSONL data, QLoRA training, PEFT adapter loading,
+FastAPI inference, and behavioral evaluation. It contains no commercial LLM API.
 
 ## Getting started
 
@@ -111,7 +123,7 @@ Also replace the placeholder `CONTACT_EMAIL` in `src/content/data.ts`.
 1. Push this folder to a Git repository.
 2. Import it in Vercel (framework auto-detected as Next.js — no config needed).
 3. Set the production domain, then update the hard-coded base URL
-   `https://art4good.ist` in `src/app/layout.tsx`, `sitemap.ts` and `robots.ts`.
+   `https://art4good.info` in `src/app/layout.tsx`, `sitemap.ts` and `robots.ts`.
 
 ## Notes
 

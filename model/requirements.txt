@@ -1,0 +1,12 @@
+accelerate>=1.0,<2
+bitsandbytes>=0.45,<1; platform_system != "Darwin"
+datasets>=3.0,<5
+fastapi>=0.115,<1
+peft>=0.14,<1
+pydantic>=2.9,<3
+pyyaml>=6,<7
+safetensors>=0.4,<1
+torch>=2.4,<3
+transformers>=4.48,<6
+trl>=0.13,<1
+uvicorn[standard]>=0.32,<1
