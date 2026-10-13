@@ -3,10 +3,16 @@ import PageHeader from "@/components/PageHeader";
 import AwarenessQuiz from "@/components/AwarenessQuiz";
 import type { Locale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Art access quiz",
-  description: "Ten sourced questions about children's access to art, poverty and creative education.",
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return {
+    title: "Art access quiz",
+    description: "Ten sourced questions about children's access to art, poverty and creative education.",
+    alternates: {
+      canonical: `/${params.locale}/quiz`,
+      languages: { en: "/en/quiz", tr: "/tr/quiz" },
+    },
+  };
+}
 
 export default function QuizPage({ params }: { params: { locale: Locale } }) {
   return (
