@@ -6,6 +6,7 @@ import { INSTAGRAM_URL, CONTACT_EMAIL } from "@/content/data";
 export default function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const explore = [
     { href: `/${locale}/about`, label: dict.nav.about },
+    { href: `/${locale}/quiz`, label: "Art access quiz" },
     { href: `/${locale}/workshops`, label: dict.nav.workshops },
     { href: `/${locale}/projects`, label: dict.nav.projects },
     { href: `/${locale}/gallery`, label: dict.nav.gallery },

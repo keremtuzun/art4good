@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import Marquee from "@/components/home/Marquee";
 import MissionSplit from "@/components/home/MissionSplit";
 import ImpactCounters from "@/components/home/ImpactCounters";
+import QuizInvitation from "@/components/home/QuizInvitation";
 import JourneyTimeline from "@/components/home/JourneyTimeline";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
 import GalleryStrip from "@/components/home/GalleryStrip";
@@ -19,6 +20,7 @@ export default function HomePage({ params }: { params: { locale: Locale } }) {
       <Marquee items={dict.marquee} />
       <MissionSplit dict={dict} />
       <ImpactCounters dict={dict} locale={locale} />
+      <QuizInvitation locale={locale} />
       <JourneyTimeline dict={dict} />
       <FeaturedProjects dict={dict} locale={locale} />
       <GalleryStrip dict={dict} locale={locale} />

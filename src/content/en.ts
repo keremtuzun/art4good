@@ -238,6 +238,9 @@ export const en = {
         "We are high-school students, many from the Koç School, who volunteer our weekends to run creative workshops, raise funds, and partner with schools and associations across the city. We don't just hand out supplies, we sit down, make a mess, laugh, and let every child discover that they are an artist.",
       ],
       valuesTitle: "Mission & values",
+      teamEyebrow: "Our team",
+      teamTitle: "Meet the people behind Art4Good.",
+      teamLede: "Ayda, Maya and Kerem help turn the belief that every child deserves art into real workshops and opportunities.",
       values: [
         { title: "Access for all", text: "Creativity should never depend on income or a school's budget." },
         { title: "Child-led", text: "Every session makes space for children's own ideas and voices." },

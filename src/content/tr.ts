@@ -241,6 +241,9 @@ export const tr: typeof en = {
         "Çoğu Koç Okulu'ndan lise öğrencileriyiz; hafta sonlarımızı yaratıcı atölyeler yürütmeye, kaynak toplamaya ve şehir genelinde okul ve derneklerle iş birliği yapmaya ayırıyoruz. Sadece malzeme dağıtmıyoruz, oturuyor, karıştırıyor, gülüyor ve her çocuğun bir sanatçı olduğunu keşfetmesini sağlıyoruz.",
       ],
       valuesTitle: "Misyon ve değerler",
+      teamEyebrow: "Ekibimiz",
+      teamTitle: "Art4Good'un arkasındaki insanlarla tanışın.",
+      teamLede: "Ayda, Maya ve Kerem, her çocuğun sanata erişimi olması gerektiği inancını atölyelere ve fırsatlara dönüştürüyor.",
       values: [
         { title: "Herkes için erişim", text: "Yaratıcılık asla gelire ya da okul bütçesine bağlı olmamalı." },
         { title: "Çocuk odaklı", text: "Her seans çocukların kendi fikirlerine ve sesine alan açar." },

@@ -5,6 +5,12 @@ import PageHeader from "@/components/PageHeader";
 import ArtImage from "@/components/ArtImage";
 import Reveal from "@/components/Reveal";
 
+const teamMembers = [
+  { name: "Ayda Kılınç", initials: "AK", color: "bg-brand-yellow/30" },
+  { name: "Maya", initials: "M", color: "bg-brand-pink/25" },
+  { name: "Kerem Tüzün", initials: "KT", color: "bg-brand-blue/20" },
+];
+
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
   const dict = getDictionary(isLocale(params.locale) ? params.locale : "en");
   return { title: dict.pages.about.title, description: dict.pages.about.lede };
@@ -27,6 +33,22 @@ export default function AboutPage({ params }: { params: { locale: Locale } }) {
           <Reveal delay={0.1} className="relative aspect-[4/5] overflow-hidden rounded-[30px] border-[6px] border-white shadow-lift">
             <ArtImage artKey="workshop" alt={dict.pages.about.title} seed="about" />
           </Reveal>
+        </div>
+
+        <div className="mt-20" id="team">
+          <span className="eyebrow">{dict.pages.about.teamEyebrow}</span>
+          <h2 className="mt-4 text-[clamp(2rem,4vw,2.8rem)]">{dict.pages.about.teamTitle}</h2>
+          <p className="mt-3 max-w-2xl text-lg text-muted">{dict.pages.about.teamLede}</p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-3">
+            {teamMembers.map((member, index) => (
+              <Reveal key={member.name} delay={index * 0.06} className="card p-6">
+                <div className={`grid aspect-[4/3] place-items-center rounded-2xl ${member.color}`} aria-hidden="true">
+                  <span className="font-hand text-6xl text-ink">{member.initials}</span>
+                </div>
+                <h3 className="mt-5 text-xl">{member.name}</h3>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <div className="mt-16">
