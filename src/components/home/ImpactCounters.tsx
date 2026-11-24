@@ -39,7 +39,7 @@ export default function ImpactCounters({ dict, locale }: { dict: Dictionary; loc
             <Reveal key={stat.id} delay={i * 0.05}>
               <div className={`h-full rounded-[24px] ${TINTS[stat.id]} p-3 sm:p-5`}>
                 <div
-                  className={`bg-gradient-to-r ${GRADIENTS[stat.id]} bg-clip-text font-display text-[clamp(1.5rem,5vw,3.2rem)] leading-none text-transparent`}
+                  className={`whitespace-nowrap bg-gradient-to-r ${GRADIENTS[stat.id]} bg-clip-text font-display text-[clamp(1.375rem,5vw,3.2rem)] leading-none text-transparent`}
                 >
                   <Counter value={stat.value} suffix={stat.suffix} locale={locale} />
                 </div>
