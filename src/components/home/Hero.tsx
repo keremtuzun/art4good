@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import type { Dictionary, Locale } from "@/lib/i18n";
+import { FUNDRAISING } from "@/content/data";
 import ArtImage from "@/components/ArtImage";
 import MagneticButton from "@/components/MagneticButton";
 import Counter from "@/components/Counter";
@@ -72,24 +73,25 @@ export default function Hero({ locale, dict }: { locale: Locale; dict: Dictionar
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <div>
-              <dt className="sr-only">{dict.impact.stats.marathon}</dt>
+            <div className="flex flex-col">
+              <dt className="order-2 text-sm font-semibold text-muted">
+                {dict.projects.items["istanbul-marathon-2026"].title}
+              </dt>
               <dd className="font-display text-[1.7rem] leading-none">
-                <Counter value={27000} suffix=" ₺" locale={locale} />
+                <Counter value={FUNDRAISING.marathon2026} suffix=" ₺" locale={locale} />
               </dd>
-              <span className="text-sm font-semibold text-muted">{dict.projects.raised}</span>
             </div>
-            <div>
+            <div className="flex flex-col">
+              <dt className="order-2 text-sm font-semibold text-muted">{dict.projects.items["bake-sale"].title}</dt>
               <dd className="font-display text-[1.7rem] leading-none">
-                <Counter value={7500} suffix=" ₺" locale={locale} />
+                <Counter value={FUNDRAISING.bakeSale} suffix=" ₺" locale={locale} />
               </dd>
-              <span className="text-sm font-semibold text-muted">{dict.projects.items["bake-sale"].title}</span>
             </div>
-            <div>
+            <div className="flex flex-col">
+              <dt className="order-2 text-sm font-semibold text-muted">{dict.impact.stats.partners}</dt>
               <dd className="font-display text-[1.7rem] leading-none">
                 <Counter value={5} locale={locale} />
               </dd>
-              <span className="text-sm font-semibold text-muted">{dict.impact.stats.partners}</span>
             </div>
           </motion.dl>
         </div>

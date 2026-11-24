@@ -35,7 +35,9 @@ export default function ProjectDetail({ params }: { params: { locale: Locale; sl
             ← {dict.pages.projects.title}
           </Link>
           <Reveal className="mt-5">
-            <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-red">{t.date}</span>
+            {t.date && (
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-red">{t.date}</span>
+            )}
             <h1 className="mt-2 max-w-3xl text-[clamp(2.1rem,5vw,3.4rem)] leading-[1.06]">{t.title}</h1>
             <p className="mt-4 max-w-2xl text-xl text-muted">{t.summary}</p>
           </Reveal>

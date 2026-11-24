@@ -52,11 +52,13 @@ export const en = {
   impact: {
     eyebrow: "Our impact",
     title: "Small hands, real change.",
-    lede: "The numbers behind the colour, every one confirmed from our own campaigns and records.",
-    note: "Figures confirmed from our fundraising campaigns and volunteering records.",
+    lede: "Figures from Art4Good campaigns, volunteering and affiliated projects.",
+    note: "Figures come from fundraising and volunteering records.",
     stats: {
+      marathon2026: "raised · Istanbul Marathon 2026",
       marathon: "raised · Istanbul Marathon 2025 “Run for Good”",
       bakesale: "raised · bake sale fundraiser",
+      kalpten: "Kalpten Kutular · affiliated project",
       biennial: "weeks volunteering · 18th Istanbul Biennial",
       partners: "partner organisations",
     },
@@ -86,7 +88,7 @@ export const en = {
     raised: "raised",
     children: "children reached",
     weeks: "weeks",
-    filters: { all: "All", workshop: "Workshops", fundraiser: "Fundraisers", volunteering: "Volunteering", future: "Coming soon" },
+    filters: { all: "All", workshop: "Workshops", fundraiser: "Fundraisers", affiliated: "Affiliated Projects", volunteering: "Volunteering", future: "Coming soon" },
     items: {
       "art-workshops": {
         title: "Children's art workshops",
@@ -95,6 +97,14 @@ export const en = {
         detail: [
           "Our workshops are the heart of Art4Good. Each weekend, a group of student volunteers brings a themed creative session to children who rarely get the chance to make art.",
           "We've explored dream cities, superpowers, clay sculpting, origami and recycled-material art. The goal is never a perfect result, it's a space where every child can express themselves freely and leave proud of what they made.",
+        ],
+      },
+      "istanbul-marathon-2026": {
+        title: "Istanbul Marathon 2026",
+        date: "November 2026",
+        summary: "Art4Good’s fundraising campaign for the 2026 Istanbul Marathon.",
+        detail: [
+          "Art4Good raised funds through its campaign for the 2026 Istanbul Marathon on 1 November.",
         ],
       },
       "istanbul-marathon-2025": {
@@ -113,6 +123,14 @@ export const en = {
         detail: [
           "A classic done well: our volunteers baked, sold and shared, turning a school bake sale into a meaningful contribution towards workshop materials.",
           "Every lira raised goes directly into brushes, paint and paper for the children we serve.",
+        ],
+      },
+      "kalpten-kutular": {
+        title: "Kalpten Kutular",
+        date: null,
+        summary: "An affiliated project that prepares gift boxes for children in hospital.",
+        detail: [
+          "Kalpten Kutular raises funds to prepare gift boxes for children in hospital.",
         ],
       },
       "istanbul-biennial": {

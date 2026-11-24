@@ -42,7 +42,9 @@ export default function ProjectCard({
         )}
       </div>
       <div className="p-6">
-        <span className="text-xs font-bold uppercase tracking-[0.12em] text-brand-red">{t.date}</span>
+        {t.date && (
+          <span className="text-xs font-bold uppercase tracking-[0.12em] text-brand-red">{t.date}</span>
+        )}
         <h3 className="mt-1.5 text-xl">{t.title}</h3>
         <p className="mt-2 line-clamp-3 text-muted">{t.summary}</p>
         <span className="mt-4 inline-flex items-center gap-1.5 font-bold text-ink transition-colors group-hover:text-brand-red">

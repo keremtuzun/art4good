@@ -24,18 +24,25 @@ export type ArtKey =
   | "artwork-2"
   | "artwork-3";
 
-export type ProjectCategory = "workshop" | "fundraiser" | "volunteering" | "future";
+export type ProjectCategory = "workshop" | "fundraiser" | "affiliated" | "volunteering" | "future";
 
 export interface ProjectMeta {
   slug: string;
   art: ArtKey;
   img?: string;
-  date: string; // ISO-ish, for sorting/display
+  date?: string; // ISO-ish, for sorting/display
   category: ProjectCategory;
   metric?: { value: number; suffix?: string; confirmed: boolean; kind: "raised" | "children" | "weeks" };
   partners?: string[];
   gallery?: ArtKey[];
 }
+
+export const FUNDRAISING = {
+  marathon2026: 43500,
+  marathon2025: 27000,
+  bakeSale: 7500,
+  kalptenKutular: 69800,
+};
 
 export const PROJECTS: ProjectMeta[] = [
   {
@@ -47,11 +54,18 @@ export const PROJECTS: ProjectMeta[] = [
     gallery: ["kids", "clay", "paint", "workshop"],
   },
   {
+    slug: "istanbul-marathon-2026",
+    art: "marathon",
+    date: "2026-11-01",
+    category: "fundraiser",
+    metric: { value: FUNDRAISING.marathon2026, suffix: " ₺", confirmed: true, kind: "raised" },
+  },
+  {
     slug: "istanbul-marathon-2025",
     art: "marathon",
     date: "2025-11-02",
     category: "fundraiser",
-    metric: { value: 27000, suffix: " ₺", confirmed: true, kind: "raised" },
+    metric: { value: FUNDRAISING.marathon2025, suffix: " ₺", confirmed: true, kind: "raised" },
     partners: ["tog"],
     gallery: ["marathon", "workshop"],
   },
@@ -60,8 +74,14 @@ export const PROJECTS: ProjectMeta[] = [
     art: "bakesale",
     date: "2025-12-10",
     category: "fundraiser",
-    metric: { value: 7500, suffix: " ₺", confirmed: true, kind: "raised" },
+    metric: { value: FUNDRAISING.bakeSale, suffix: " ₺", confirmed: true, kind: "raised" },
     gallery: ["bakesale", "materials"],
+  },
+  {
+    slug: "kalpten-kutular",
+    art: "boxes",
+    category: "affiliated",
+    metric: { value: FUNDRAISING.kalptenKutular, suffix: " ₺", confirmed: true, kind: "raised" },
   },
   {
     slug: "istanbul-biennial",
@@ -93,10 +113,12 @@ export const JOURNEY: { id: string; art: ArtKey }[] = [
   { id: "impact", art: "clay" },
 ];
 
-/** Impact counters. Every figure here is confirmed from our campaigns/records. */
+/** Impact counters for Art4Good and affiliated projects. */
 export const IMPACT: { id: string; value: number; suffix?: string; confirmed: boolean }[] = [
-  { id: "marathon", value: 27000, suffix: " ₺", confirmed: true },
-  { id: "bakesale", value: 7500, suffix: " ₺", confirmed: true },
+  { id: "marathon2026", value: FUNDRAISING.marathon2026, suffix: " ₺", confirmed: true },
+  { id: "marathon", value: FUNDRAISING.marathon2025, suffix: " ₺", confirmed: true },
+  { id: "bakesale", value: FUNDRAISING.bakeSale, suffix: " ₺", confirmed: true },
+  { id: "kalpten", value: FUNDRAISING.kalptenKutular, suffix: " ₺", confirmed: true },
   { id: "biennial", value: 7, suffix: "", confirmed: true },
   { id: "partners", value: 5, suffix: "", confirmed: true },
 ];

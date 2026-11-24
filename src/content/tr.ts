@@ -55,11 +55,13 @@ export const tr: typeof en = {
   impact: {
     eyebrow: "Etkimiz",
     title: "Küçük eller, gerçek değişim.",
-    lede: "Renklerin arkasındaki rakamlar; her biri kendi kampanya ve kayıtlarımızdan doğrulanmıştır.",
-    note: "Rakamlar bağış kampanyalarımızdan ve gönüllülük kayıtlarımızdan doğrulanmıştır.",
+    lede: "Art4Good’un kampanyalarından, gönüllülük çalışmalarından ve bağlantılı projelerden rakamlar.",
+    note: "Rakamlar bağış ve gönüllülük kayıtlarına dayanır.",
     stats: {
+      marathon2026: "toplandı · İstanbul Maratonu 2026",
       marathon: "toplandı · İstanbul Maratonu 2025 “Run for Good”",
       bakesale: "toplandı · kermes etkinliği",
+      kalpten: "Kalpten Kutular · bağlantılı proje",
       biennial: "hafta gönüllülük · 18. İstanbul Bienali",
       partners: "paydaş kurum",
     },
@@ -89,7 +91,7 @@ export const tr: typeof en = {
     raised: "toplandı",
     children: "çocuğa ulaşıldı",
     weeks: "hafta",
-    filters: { all: "Tümü", workshop: "Atölyeler", fundraiser: "Bağış", volunteering: "Gönüllülük", future: "Yakında" },
+    filters: { all: "Tümü", workshop: "Atölyeler", fundraiser: "Bağış", affiliated: "Bağlantılı Projeler", volunteering: "Gönüllülük", future: "Yakında" },
     items: {
       "art-workshops": {
         title: "Çocuk sanat atölyeleri",
@@ -98,6 +100,14 @@ export const tr: typeof en = {
         detail: [
           "Atölyelerimiz Art4Good'un kalbidir. Her hafta sonu bir grup öğrenci gönüllü, sanat yapma fırsatını nadiren bulan çocuklara temalı bir yaratıcı seans götürür.",
           "Hayalimizdeki şehirleri, süper güçleri, hamur heykelleri, origamiyi ve geri dönüşüm sanatını birlikte keşfettik. Amacımız kusursuz bir sonuç değil, her çocuğun kendini özgürce ifade edebileceği ve yaptığıyla gurur duyarak ayrılacağı bir alan.",
+        ],
+      },
+      "istanbul-marathon-2026": {
+        title: "İstanbul Maratonu 2026",
+        date: "Kasım 2026",
+        summary: "Art4Good’un 2026 İstanbul Maratonu için yürüttüğü bağış kampanyası.",
+        detail: [
+          "Art4Good, 1 Kasım’da düzenlenen 2026 İstanbul Maratonu kapsamında bağış topladı.",
         ],
       },
       "istanbul-marathon-2025": {
@@ -116,6 +126,14 @@ export const tr: typeof en = {
         detail: [
           "Klasiğin güzeli: gönüllülerimiz pişirdi, sattı ve paylaştı, bir okul kermesini atölye malzemelerine anlamlı bir katkıya çevirdi.",
           "Toplanan her lira doğrudan çocuklar için fırça, boya ve kâğıda gidiyor.",
+        ],
+      },
+      "kalpten-kutular": {
+        title: "Kalpten Kutular",
+        date: null,
+        summary: "Hastanedeki çocuklar için hediye kutuları hazırlayan bağlantılı proje.",
+        detail: [
+          "Kalpten Kutular, hastanedeki çocuklara hediye kutuları hazırlamak için bağış topluyor.",
         ],
       },
       "istanbul-biennial": {

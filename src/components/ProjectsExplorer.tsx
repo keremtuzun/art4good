@@ -8,7 +8,7 @@ import ProjectCard from "./ProjectCard";
 import { cn } from "@/lib/utils";
 
 type Filter = "all" | ProjectCategory;
-const FILTERS: Filter[] = ["all", "workshop", "fundraiser", "volunteering", "future"];
+const FILTERS: Filter[] = ["all", "workshop", "fundraiser", "affiliated", "volunteering", "future"];
 
 export default function ProjectsExplorer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const [filter, setFilter] = useState<Filter>("all");
